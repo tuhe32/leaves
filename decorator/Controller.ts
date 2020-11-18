@@ -8,7 +8,7 @@ import {
   REQUEST_PARAM_METADATA,
   ROUTE_MIDDLEWARE,
 } from "../metadata.ts";
-import { getMetadataArgsStorage } from "../mod.ts";
+import { getMetadataArgsStorage } from "../Application.ts";
 import { getParamInfo } from "../injection/reflection-helpers.ts";
 import { typeInfo } from "../injection/dependency-container.ts";
 

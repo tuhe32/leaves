@@ -1,4 +1,4 @@
-import { getMetadataArgsStorage } from "../mod.ts";
+import { getMetadataArgsStorage } from "../Application.ts";
 
 // export function Middleware(route: RegExp): Function {
 //   return function (middleware: any) {

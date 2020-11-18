@@ -1,8 +1,9 @@
 import { colors, serve, serveTLS, Status } from "./deps.ts";
+import { MetadataArgsStorage, ROUTE_MIDDLEWARE } from "./metadata.ts";
+import { Reflect } from "./deps.ts";
 // import {cors} from "../cors.ts";
 // import {assets} from "../assets.ts";
 // import {appConfig} from "../application.ts";
-import { getMetadataArgsStorage } from "./mod.ts";
 import {
   ListenOptions,
   Req,
@@ -14,6 +15,33 @@ import {
 } from "./model.ts";
 import { Request } from "./request.ts";
 import { Response } from "./response.ts";
+import { ObjectKeyAny } from "./mod.ts";
+
+const global: ObjectKeyAny = {};
+
+export function getMetadataArgsStorage(): MetadataArgsStorage {
+  if (!(global as any).routingControllersMetadataArgsStorage) {
+    (global as any).routingControllersMetadataArgsStorage =
+      new MetadataArgsStorage();
+  }
+
+  return (global as any).routingControllersMetadataArgsStorage;
+}
+
+export const defineMiddleware = (middleware: Function): MethodDecorator => {
+  return (target, key, descriptor) => {
+    const routeMiddleware = Reflect.getMetadata(
+      ROUTE_MIDDLEWARE,
+      descriptor.value,
+    ) || [];
+    routeMiddleware.push(middleware);
+    Reflect.defineMetadata(
+      ROUTE_MIDDLEWARE,
+      routeMiddleware,
+      descriptor.value,
+    );
+  };
+};
 
 export class Application {
   request: Request;
