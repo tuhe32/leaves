@@ -1,0 +1,8 @@
+POST http://localhost:8000/app/testPost/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "He",
+  "age": "16"
+}
