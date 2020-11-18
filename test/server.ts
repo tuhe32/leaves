@@ -1,9 +1,6 @@
-import { serve } from "../deps.ts";
-import { TestCtrl } from "./controller/TestCtrl.ts";
-import { Reflect } from "../deps.ts";
-import { Router } from "../router.ts";
-import { MiddlewareGlobal } from "./middleware/Middleware.ts";
 import { App, Res, transformer } from "../mod.ts";
+import { TestCtrl } from "./controller/TestCtrl.ts";
+import { MiddlewareGlobal } from "./middleware/Middleware.ts";
 // import { autoLoad } from "./utils/auto.load.ts";
 // const s = serve({ port: 8000 });
 

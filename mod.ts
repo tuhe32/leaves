@@ -21,6 +21,8 @@ export * as transformer from "https://esm.sh/class-transformer@0.3.1";
 
 // DI
 export * from "./injection/index.ts";
+// Decorator
+export * from "./decorator/mod.ts";
 
 export const defineMiddleware = (middleware: Function): MethodDecorator => {
   return (target, key, descriptor) => {

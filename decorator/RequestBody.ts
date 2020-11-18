@@ -4,7 +4,7 @@ import {
   REQUEST_BODY_TRANSFORM_METADATA,
 } from "../metadata.ts";
 
-export const RequstBody = (transform?: any): Function =>
+export const RequestBody = (transform?: any): Function =>
   (
     target: Object,
     propertyKey: string,
