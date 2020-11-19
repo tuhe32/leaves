@@ -17,21 +17,17 @@ export const BASE_ROUTE = "base_route";
 
 export const Controller = (path: string): ClassDecorator =>
   (target: any) => {
-    // const params: any[] = Reflect.getMetadata("design:paramtypes", target) ||
-    //   [];
-    // console.log(params);
     typeInfo.set(target, getParamInfo(target));
     Reflect.defineMetadata(CONTROLLER_METADATA, true, target);
     Reflect.defineMetadata(BASE_ROUTE, path || "", target);
     const container = getMetadataArgsStorage().container;
     const instance: ObjectKeyAny = container.resolve(target as any);
     mapRoute(target, instance);
-
     return target;
   };
 
 function mapRoute(target: Function, instance: ObjectKeyAny) {
-  const base_route = Reflect.getMetadata(BASE_ROUTE, target);
+  const base_route = Reflect.getMetadata(BASE_ROUTE, target) || "";
   const prototype = target.prototype;
 
   // 筛选出类的 methodName

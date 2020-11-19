@@ -11,3 +11,6 @@ const createMappingDecorator = (method: string) =>
 
 export const Get = createMappingDecorator("get");
 export const Post = createMappingDecorator("post");
+export const Put = createMappingDecorator("put");
+export const Delete = createMappingDecorator("delete");
+export const Patch = createMappingDecorator("patch");
