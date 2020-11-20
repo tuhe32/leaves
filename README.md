@@ -83,10 +83,23 @@ tsconfig.app.json:
 Run:
 
 ```shell
-deno run -c tsconfig.json --allow-net --allow-read --unstable app.ts
+deno run -c tsconfig.json --allow-net --allow-read --unstable server.ts
 ```
 
-## Notice:
+## Note:
+
+### Load Controllers
+
+```typescript
+import { TestCtrl } from "./controller/TestCtrl.ts";
+
+// use path to autoload all
+const app = new App("./test/controller", [MiddlewareGlobal]);
+// or use controller array 
+const app = new App([TestCtrl], [MiddlewareGlobal]);
+```
+
+
 
 #### Custom Middleware
 

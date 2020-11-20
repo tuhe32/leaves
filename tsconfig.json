@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
     "allowJs": true,
-    "module": "esnext",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "composite": true
   },
   "references": [
     {

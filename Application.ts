@@ -1,6 +1,7 @@
 import { colors, serve, serveTLS, Status } from "./deps.ts";
 import { MetadataArgsStorage, ROUTE_MIDDLEWARE } from "./metadata.ts";
 import { Reflect } from "./deps.ts";
+import { autoLoad } from "./utils/auto.load.ts";
 // import {cors} from "../cors.ts";
 // import {assets} from "../assets.ts";
 // import {appConfig} from "../application.ts";
@@ -49,7 +50,11 @@ export class Application {
   private globalErrorHandler?: (res: Res, error: Error) => void;
   private transformConfigMap?: TransformConfigMap | undefined = undefined;
 
-  constructor(private controller: Function[], private middwares: Function[]) {
+  constructor(
+    private controllerOrPath: Function[] | string,
+    private middwares: Function[],
+  ) {
+    if (typeof controllerOrPath === "string") autoLoad(controllerOrPath);
     this.request = new Request();
     this.response = new Response();
   }
